@@ -1,6 +1,6 @@
 width=10;
-length=20;
-height=13;
+length=26;
+height=15;
 thickness=3;
 winglength=15;
 
@@ -11,7 +11,7 @@ module wing() {
             translate(v=[winglength +(length /2),width/2,0]) cylinder(h=thickness,r=width/2);
         }
         //holes
-        translate(v=[winglength + (length/2) ,width/2,0]) cylinder(h=thickness,r=width/6);
+        translate(v=[winglength + (length/2) ,width/2,0]) cylinder(h=thickness,r=width/12);
     }
 
 
