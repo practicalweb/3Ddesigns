@@ -1,8 +1,8 @@
-// 35mm measured - make teh hole 1mm bigger so it isn't too tight
-diameter=37;
+// 35mm measured - make the hole 1mm bigger so it isn't too tight
+diameter=38;
 radius=(diameter/2);
 // 37 mm measured
-tall=40;
+tall=42;
 // 2 x 2 mm measured
 notch = 3;
 
@@ -20,7 +20,7 @@ thick=2;
 extension=35;
 //how thick bracket should be
 extensionwidth=30;
-  versionlabel = "v3";
+  versionlabel = "v4";
   screwholeradius=1.5;
   
 module outline() {
