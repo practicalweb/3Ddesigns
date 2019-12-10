@@ -2,7 +2,7 @@
 diameter=38;
 radius=(diameter/2);
 // 37 mm measured
-tall=42;
+tall=40;
 // 2 x 2 mm measured
 notch = 3;
 
@@ -20,14 +20,15 @@ thick=2;
 extension=35;
 //how thick bracket should be
 extensionwidth=30;
-  versionlabel = "v4";
-  screwholeradius=1.5;
+  versionlabel = "v5";
+  screwholeradius=2;
   
 module outline() {
 maincylinder();
     
 extension();
 
+// bumps outside notch
 translate (v=[0 , radius, 0])  cylinder(tall+thick, notch + thick,notch + thick);
 translate (v=[0 ,-radius , 0])  cylinder(tall+thick, notch + thick,notch + thick);;
 }
@@ -52,7 +53,7 @@ module extension(){
 }
 
 module space(){
-// central hole
+// central vertical hole
     translate(v=[-0, -0, thick]) cylinder(h=tall,r=radius);
 // direct drive hole
   //  translate(v=[ddwidth - thick, -2* thick -(ddwidth/2), (tall+ thick  - dddepth)]) cube(size=[ddwidth + thick, ddwidth + 4* thick, dddepth]);
@@ -64,18 +65,24 @@ module space(){
       rotate(a=[0, 90, 0])  
         cylinder(h=thick * 3,r=9);
     //bottom screw hole access
-        translate (v=[-(diameter/2 + thick), 0, thick * 2 + screwholeradius ])
-      rotate(a=[0, 90, 0])  
-        cylinder(h=thick * 3,r=4);
+    //    translate (v=[-(diameter/2 + thick), 0, thick * 2 + screwholeradius ])
+   //   rotate(a=[0, 90, 0])  
+   //     cylinder(h=thick * 3,r=4);
     
     // screw hole
     
     translate (v=[-(diameter - thick), 0, tall +thick - ddholefromtop])
       rotate(a=[0, 90, 0])  
         cylinder(h=500,r=screwholeradius);
-    translate (v=[-(diameter - thick), 0, screwholeradius  +  2* thick])
+   // screwhole countersink     
+    translate (v=[-(diameter - thick) - 10 , 0, tall +thick - ddholefromtop])
       rotate(a=[0, 90, 0])  
-        cylinder(h=500,r=screwholeradius);
+        cylinder(h=90,r=screwholeradius + 2);
+        
+        
+  //  translate (v=[-(diameter - thick), 0, screwholeradius  +  2* thick])
+  //    rotate(a=[0, 90, 0])  
+  //      cylinder(h=500,r=screwholeradius);
    
 
 
@@ -85,7 +92,7 @@ module space(){
      // version label
    font = "Liberation Sans";
 
-translate ([diameter+10,-5,tall ])  {
+translate ([diameter+10,-5,tall +1.8 ])  {
    linear_extrude(height = 2) {
       rotate (90, 0 , 0) text(versionlabel, font = font, size = 10);
      }
